@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/maincss.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../css/Hover-master/css/hover.css" rel="stylesheet" media="all">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    
+   
+    
+    <script>
+        flag = false;
+        $(document).on("scroll", function() {
+          var scrollPosition = scrollY || pageYOffset;
+          if (scrollPosition > $(".meter").position().top - $(window).height()) {
+            $(document).off('scroll');
+            $(".meter > span").each(function() {
+                $(this)
+                    .data("origWidth", $(this).width())
+                    .width(0)
+                    .animate({
+                        width: $(this).data("origWidth")
+                    }, 1200);
+            });
+          }
+        });
+    </script>
+    
+    
+    <script>
+		$(document).ready(function () {
+                $("input#submit").click(function(){
+				$.ajax({
+					type: "POST",
+					url: "process.php", // 
+					data: $('form.contact').serialize(),
+					success: function(msg){
+						$("#thanks").html(msg)
+						$("#form-content").modal('hide');	
+					},
+					error: function(){
+						alert("failure");
+					}
+				});
+			});
+		});
+    </script>
+    
+    <!--CREATE GOOGLE MAP ON PAGE -->
+    
+    <script>
+var map;
+var myCenter=new google.maps.LatLng(39.3,-92);
+var carfaxPosition = new google.maps.LatLng(38.92354508533175, -92.28858260437846)
+var flatBranchPosition = new google.maps.LatLng(38.950152014511964, -92.33215852640569)
+var landingPosition = new google.maps.LatLng(39.562999, -91.66468854993582)
+
+
+//0.00064508533
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:9,
+  scrollwheel: false,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+  map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    
+    
+//CARFAX MARKERS------------------------------------------------------------------
+  var carfaxMarker=new google.maps.Marker({
+    position:carfaxPosition,
+  });
+    
+  var backCarfaxMarker=new google.maps.Marker({
+    position: new google.maps.LatLng(38.9229, -92.28858260437846)
+  });  
+
+//FLAT BRANCH MARKERS--------------------------------------------------------------
+  var flatBranchMarker=new google.maps.Marker({
+    position:flatBranchPosition,
+  });
+    
+  var backFlatBranchMarker=new google.maps.Marker({
+    position: new google.maps.LatLng(38.9495069292, -92.33215852640569)
+  }); 
+
+//LANDING MARKERS------------------------------------------------------------------
+  var landingMarker=new google.maps.Marker({
+    position:landingPosition,
+  });
+    
+  var backLandingMarker=new google.maps.Marker({
+    position: new google.maps.LatLng(39.5623539147, -91.66468854993582)
+  });
+    
+  carfaxMarker.setMap(map);   
+  flatBranchMarker.setMap(map); 
+  landingMarker.setMap(map);
+
+  var backButtonInfo = new google.maps.InfoWindow({
+      content:"Click Here To Go Back!"
+  });
+    
+  var carfaxInfo = new google.maps.InfoWindow({
+    content:"This is CARFAX!"
+  });
+    
+  var flatBranchInfo = new google.maps.InfoWindow({
+      content:"This is Flat Branch!"
+  });
+    
+  var landingInfo = new google.maps.InfoWindow({
+    content:"This is The Landing!"
+  });
+    
+  google.maps.event.addListener(carfaxMarker, 'click', function() {
+  backCarfaxMarker.setMap(map);
+  backButtonInfo.open(map,backCarfaxMarker);
+  map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+  map.setCenter(carfaxMarker.getPosition());
+  map.setZoom(19);
+  carfaxInfo.open(map,carfaxMarker);
+  });
+    
+  google.maps.event.addListener(flatBranchMarker, 'click', function() {
+  backFlatBranchMarker.setMap(map);
+  backButtonInfo.open(map,backFlatBranchMarker);
+  map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+  map.setCenter(flatBranchMarker.getPosition());
+  map.setZoom(20);
+  flatBranchInfo.open(map,flatBranchMarker);
+  });
+    
+  google.maps.event.addListener(landingMarker, 'click', function() {
+  backLandingMarker.setMap(map);
+  backButtonInfo.open(map,backLandingMarker);
+  map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+  map.setCenter(landingMarker.getPosition());
+  map.setZoom(18);
+  landingInfo.open(map,landingMarker);
+  });
+  
+    
+// BACK BUTTONS --------------------------------------------------------------------
+  google.maps.event.addListener(backCarfaxMarker, 'click', function() {
+  map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+  map.setCenter(myCenter);
+  map.setZoom(9);
+  backCarfaxMarker.setMap(null);
+  carfaxInfo.close();
+  }); 
+    
+  google.maps.event.addListener(backLandingMarker, 'click', function() {
+  map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+  map.setCenter(myCenter);
+  map.setZoom(9);
+  backLandingMarker.setMap(null);
+  landingInfo.close();
+  });
+    
+  google.maps.event.addListener(backFlatBranchMarker, 'click', function() {
+  map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+  map.setCenter(myCenter);
+  map.setZoom(9);
+  backFlatBranchMarker.setMap(null);
+  flatBranchInfo.close();
+  });
+    
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+    
+<!--
+CARFAX = 38.92354508533175, -92.28858260437846
+Landing = 39.562691476053885, -91.66468854993582
+Flat Branch = 38.950152014511964, -92.33215852640569
+
+Center Point = 39, -92
+-->
+    
+    
+    <script>
+      // Get the headers position from the top of the page, plus its own height
+      var startY = 450;
+
+      $(window).scroll(function(){
+        checkY();
+      });
+
+      function checkY(){
+        if( $(window).scrollTop() > startY ){
+            $('.scrollHeader').slideDown();
+        }else{
+            $('.scrollHeader').hide();
+        }
+      }
+
+      // Do this on load just in case the user starts half way down the page
+      checkY();
+
+      $(document).ready(function() {
+    	$('a[rel="relativeanchor"]').click(function(){
+    	    $('html, body').animate({
+    	        scrollTop: $( $.attr(this, 'href') ).offset().top + -100
+    	    }, 500);
+    	    return false;
+    	});
+    });
+
+
+    </script>
+</head>
+<body>
+<div id="topSection">
+  <div class="centerText">
+    <h1 id="myName">Bradey Yarbrough Whitlock</h1>
+    <h3 id="myPosition">Software Delevoper</h3>
+  </div>
+  <img id="cityImage" src="http://static1.1.sqspcdn.com/static/f/415905/12609808/1307570384597/City.png?token=ILO2R902GOui0g0PCL1uQgZVU9c%3D" alt="City" width="100%">
+</div>
+
+<div class='scrollHeader'>
+  <a href="#aboutMeSection" rel='relativeanchor' class='box hvr-bounce-to-top'>
+    <i class="material-icons">face</i>
+    <h4 class='boxText'>About Me</h4>
+  </a>
+  <a href='#myExperienceSection' rel='relativeanchor' class='box hvr-bounce-to-top'>
+    <i class="material-icons">computer</i>
+    <h4 class='boxText'>My Experience</h4>
+  </a>
+  <a href='#whereHaveIWorkedSection' rel='relativeanchor' class='box hvr-bounce-to-top'>
+    <i class="material-icons">work</i>
+    <h4 class='boxText'>My Work</h4>
+  </a>
+  <a href='#mySkillsSection' rel='relativeanchor' class='box hvr-bounce-to-top'>
+    <i class="material-icons">work</i>
+    <h4 class='boxText'>My Skills</h4>
+  </a>
+  <a class='box hvr-bounce-to-top' data-toggle="modal" href="#form-content">
+    <i class="material-icons">email</i>
+    <h4 class='boxText'>Contact Me</h4>
+  </a>
+</div>
+
+<div id="aboutMeSection">
+  <div class='centerText'>
+    <h1 class='header'>Early Life</h1>
+  </div>
+  <hr>
+  <img id='aboutMePicture' class='' src='../images/littleMe.jpg'>
+  <div id='aboutMeText' class='centerText'>
+    <h3>Im Bradey!</h3>
+    <ul>
+      <li><h1>Coffee</h1></li>
+      <li type="square">Tea</li>
+      <li>Milk</li>
+    </ul>  </div>
+</div>
+
+<div id="myExperienceSection">
+  <div class='centerText'>
+    <h1 class='header'>My Experience</h1>
+  </div>
+  <hr>
+  <img id='myExperiencePicture' src='../images/meBlue.jpg'>
+  <div id='myExperienceText'>
+    <h3>Im Bradey!</h3>
+  </div>
+</div>
+    
+<div id="whereHaveIWorkedSection">
+  <div class='centerText'>
+    <h1 class='header' id="mapHeader">Where Have I Worked?</h1>
+  </div>
+  <hr>
+  <div id="googleMap"></div>
+</div>
+    
+<div id="mySkillsSection">
+  <div class='centerText'>
+    <h1 class='header'>My Skills</h1>
+  </div>
+  <hr>
+  <div class="meter blue nostripes">
+      HTML / CSS... obviously low because of these damn progress bars! @#$% it.
+      <span style="width: 33.3%"></span>
+   </div>
+    
+    <div class="meter blue nostripes">
+      Java 
+      <span style="width: 33.3%"></span>
+   </div>
+    
+    <div class="meter blue nostripes">
+      SQL
+      <span style="width: 33.3%"></span>
+   </div>
+    
+    <div class="meter blue nostripes">
+      
+      <span style="width: 33.3%"></span>
+   </div>
+    
+    <div class="meter blue nostripes">
+      <span style="width: 33.3%"></span>
+   </div>
+    
+</div>
+    
+<!--MODAL-------------------------------------------------------------------->
+<div id="form-content" class="modal hide fade in" style="display: none;">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">x</a>
+            <h3>Send me a message</h3>
+        </div>
+        <div class="modal-body">
+            <form class="contact" name="contact">
+                <label class="label" for="name">Your Name</label><br>
+                <input type="text" name="name" class="input-xlarge"><br>
+                <label class="label" for="email">Your E-mail</label><br>
+                <input type="email" name="email" class="input-xlarge"><br>
+                <label class="label" for="message">Enter a Message</label><br>
+                <textarea name="message" class="input-xlarge"></textarea>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <input class="btn btn-success" type="submit" value="JUST DO IT!" id="submit">
+            <a href="#" class="btn" data-dismiss="modal">Never Mind</a>
+        </div>
+    </div>
+
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

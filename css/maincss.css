@@ -1,0 +1,284 @@
+body{
+	height: 10000px;
+	color: black;
+}
+
+#aboutMePicture{
+    height: 500px;
+}
+
+#mapHeader{
+    margin-left: -190px;
+}
+
+#myExperiencePicture{
+    float: right;
+}
+
+#myExperienceText{
+    float: left;
+}
+
+#googleMap{
+    width: 100%;
+    height: 500px;
+}
+
+a{
+	color: black;
+}
+
+.box .material-icons{
+	font-size: 47px !important;
+	line-height: 1 !important;
+	margin-left: 5px !important;
+}
+
+.scrollHeader {
+    display: none;
+    position: fixed;
+    top:0;
+    width: 100%;
+    height: 50px;
+    min-width: 1300px;
+    background-color: #33CCFF;
+    z-index: 10;
+}
+
+#aboutMeText{
+	position: relative;
+}
+
+.box{
+	width: calc(100%/5);
+	height: 50px;
+	float:left;
+}
+
+.boxText{
+	float:left;
+	margin:15px 0px 0px 15%;
+	font-size: 24px;
+}
+
+.rightBox{
+	width: auto;
+	height: 200px;
+	float:left;
+}
+
+.bottomSection{
+	width: 100%;
+}
+
+#cityImage{
+	width: 100%;
+	height: 273px;
+	margin-top:227px;
+	opacity: .2;
+}
+
+#aboutMeSection{
+	margin: 0px 15% 0px 15%;
+	min-width: 1000px;
+	height: 700px;
+}
+
+#myExperienceSection{
+	margin: 0px 15% 0px 15%;
+	min-width: 1000px;
+	height: 700px;
+}
+
+#whereHaveIWorkedSection{
+	margin: 0px 15% 0px 15%;
+	min-width: 1000px;
+	height: 700px;
+}
+
+#mySkillsSection{
+	margin: 0px 15% 0px 15%;
+	min-width: 1000px;
+	height: 700px;
+}
+
+#aboutMePicture{
+	float:left;
+}
+
+#topSection{
+	height: 500px;
+	min-width: 1300px;
+	background-color: #33CCFF;
+}
+
+.centerText{
+	margin-left: 50%;
+}
+
+.header{
+	position: relative;
+	min-width: 600px;
+	margin: 100px 0px 100px -110px;
+}
+
+#myName{
+	position: absolute;
+	min-width: 600px;
+	margin: 100px 0px 0px -252px;
+
+}
+#myPosition{
+	position: absolute;
+	min-width: 230px;
+	margin: 145px 0px 0px -126px;
+}
+
+.mainHeader{
+	margin-left: 40%;
+}
+
+.hoverImages img{
+-webkit-transform:scale(0.8); /*Webkit: Scale down image to 0.8x original size*/
+-moz-transform:scale(0.8); /*Mozilla scale version*/
+-o-transform:scale(0.8); /*Opera scale version*/
+-webkit-transition-duration: 0.5s; /*Webkit: Animation duration*/
+-moz-transition-duration: 0.5s; /*Mozilla duration version*/
+-o-transition-duration: 0.5s; /*Opera duration version*/
+opacity: 0.7; /*initial opacity of images*/
+}
+
+.hoverImages img:hover{
+-webkit-transform:scale(1); /*Webkit: Scale up image to 1.2x original size*/
+-moz-transform:scale(1); /*Mozilla scale version*/
+-o-transform:scale(1); /*Opera scale version*/
+box-shadow:0px 0px 30px #33CCFF; /*CSS3 shadow: 30px blurred shadow all around image*/
+-webkit-box-shadow:0px 0px 30px #33CCFF; /*Safari shadow version*/
+-moz-box-shadow:0px 0px 30px #33CCFF; /*Mozilla shadow version*/
+opacity: 1;
+}
+
+.meter { 
+			height: 20px;  /* Can be anything */
+			position: relative;
+			margin: 60px 0 20px 0; /* Just for demo spacing */
+			border-radius: 25px;
+			padding: 10px;
+			-moz-box-shadow   : inset 0 -1px 1px rgba(255,255,255,0.3);
+			box-shadow        : inset 0 -1px 1px rgba(255,255,255,0.3);
+		}
+		.meter > span {
+			display: block;
+			height: 100%;
+			   -webkit-border-top-right-radius: 8px;
+			-webkit-border-bottom-right-radius: 8px;
+			       -moz-border-radius-topright: 8px;
+			    -moz-border-radius-bottomright: 8px;
+			           border-top-right-radius: 8px;
+			        border-bottom-right-radius: 8px;
+			    -webkit-border-top-left-radius: 20px;
+			 -webkit-border-bottom-left-radius: 20px;
+			        -moz-border-radius-topleft: 20px;
+			     -moz-border-radius-bottomleft: 20px;
+			            border-top-left-radius: 20px;
+			         border-bottom-left-radius: 20px;
+			background-color: rgb(43,194,83);
+			background-image: -webkit-gradient(
+			  linear,
+			  left bottom,
+			  left top,
+			  color-stop(0, rgb(43,194,83)),
+			  color-stop(1, rgb(84,240,84))
+			 );
+			background-image: -moz-linear-gradient(
+			  center bottom,
+			  rgb(43,194,83) 37%,
+			  rgb(84,240,84) 69%
+			 );
+			-webkit-box-shadow: 
+			  inset 0 2px 9px  rgba(255,255,255,0.3),
+			  inset 0 -2px 6px rgba(0,0,0,0.4);
+			-moz-box-shadow: 
+			  inset 0 2px 9px  rgba(255,255,255,0.3),
+			  inset 0 -2px 6px rgba(0,0,0,0.4);
+			box-shadow: 
+			  inset 0 2px 9px  rgba(255,255,255,0.3),
+			  inset 0 -2px 6px rgba(0,0,0,0.4);
+			position: relative;
+			overflow: hidden;
+		}
+		.meter > span:after, .animate > span > span {
+			content: "";
+			position: absolute;
+			top: 0; left: 0; bottom: 0; right: 0;
+			background-image: 
+			   -webkit-gradient(linear, 0 0, 100% 100%, 
+			      color-stop(.25, rgba(255, 255, 255, .2)), 
+			      color-stop(.25, transparent), color-stop(.5, transparent), 
+			      color-stop(.5, rgba(255, 255, 255, .2)), 
+			      color-stop(.75, rgba(255, 255, 255, .2)), 
+			      color-stop(.75, transparent), to(transparent)
+			   );
+			background-image: 
+				-moz-linear-gradient(
+				  -45deg, 
+			      rgba(255, 255, 255, .2) 25%, 
+			      transparent 25%, 
+			      transparent 50%, 
+			      rgba(255, 255, 255, .2) 50%, 
+			      rgba(255, 255, 255, .2) 75%, 
+			      transparent 75%, 
+			      transparent
+			   );
+			z-index: 1;
+			-webkit-background-size: 50px 50px;
+			-moz-background-size: 50px 50px;
+			-webkit-animation: move 2s linear infinite;
+			   -webkit-border-top-right-radius: 8px;
+			-webkit-border-bottom-right-radius: 8px;
+			       -moz-border-radius-topright: 8px;
+			    -moz-border-radius-bottomright: 8px;
+			           border-top-right-radius: 8px;
+			        border-bottom-right-radius: 8px;
+			    -webkit-border-top-left-radius: 20px;
+			 -webkit-border-bottom-left-radius: 20px;
+			        -moz-border-radius-topleft: 20px;
+			     -moz-border-radius-bottomleft: 20px;
+			            border-top-left-radius: 20px;
+			         border-bottom-left-radius: 20px;
+			overflow: hidden;
+		}
+		
+		.animate > span:after {
+			display: none;
+		}
+		
+		@-webkit-keyframes move {
+		    0% {
+		       background-position: 0 0;
+		    }
+		    100% {
+		       background-position: 50px 50px;
+		    }
+		}
+		
+		.blue > span {
+			background-color: #33CCFF;
+			background-image: -moz-linear-gradient(top, #33CCFF, #33CCFF);
+			background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #33CCFF),color-stop(1, #33CCFF));
+			background-image: -webkit-linear-gradient(#33CCFF, #33CCFF); 
+		}
+		
+		.red > span {
+			background-color: #f0a3a3;
+			background-image: -moz-linear-gradient(top, #f0a3a3, #f42323);
+			background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f0a3a3),color-stop(1, #f42323));
+			background-image: -webkit-linear-gradient(#f0a3a3, #f42323);
+		}
+		
+		.nostripes > span > span, .nostripes > span:after {
+			-webkit-animation: none;
+			background-image: none;
+		}
+
+
